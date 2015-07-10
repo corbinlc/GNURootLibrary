@@ -105,10 +105,10 @@ public class GNURootCoreActivity extends ActionBarActivityWithTabListener implem
 		termIntent.putExtra("packageName", getPackageName());
 		termIntent.putExtra("prerequisites", prerequisitesList);
 		termIntent.putExtra("statusFileName", statusFileName);
-		termIntent.putExtra("statusFileDirectory", getInstallDir().getAbsolutePath() + "/debian/support/");
+		termIntent.putExtra("statusFileDirectory", getInstallDir().getAbsolutePath() + "/support/");
 		//turn list into a space sparated list
 		String ssv = packageList.toString().replace("[", "").replace("]", "").replace(",", "");
-		String scriptStr = getInstallDir().getAbsolutePath() + "/debian/support/launchProot /support/installPackages " + statusFileName + " " + ssv + "; exit";
+		String scriptStr = getInstallDir().getAbsolutePath() + "/support/launchProot /support/installPackages " + statusFileName + " " + ssv + "";
 		termIntent.putExtra("scriptStr", scriptStr);
 		try {
 			if ((progressDialog != null) && progressDialog.isShowing()) {
@@ -135,10 +135,10 @@ public class GNURootCoreActivity extends ActionBarActivityWithTabListener implem
 		termIntent.setDataAndType(targzUri,"application/x-tar");
 		termIntent.putExtra("packageName", getPackageName());
 		termIntent.putExtra("prerequisites", prerequisitesList);
-		String scriptStr = getInstallDir().getAbsolutePath() + "/debian/support/launchProot /support/untargz " + statusFileName;
+		String scriptStr = getInstallDir().getAbsolutePath() + "/support/launchProot /support/untargz " + statusFileName;
 		termIntent.putExtra("scriptStr", scriptStr);
 		termIntent.putExtra("statusFileName", statusFileName);
-		termIntent.putExtra("statusFileDirectory", getInstallDir().getAbsolutePath() + "/debian/support/");
+		termIntent.putExtra("statusFileDirectory", getInstallDir().getAbsolutePath() + "/support/");
 		try {
 			if ((progressDialog != null) && progressDialog.isShowing()) {
 				progressDialog.setMessage("Tar file being installed in GNURoot Debian.");
@@ -162,8 +162,8 @@ public class GNURootCoreActivity extends ActionBarActivityWithTabListener implem
 		termIntent.addCategory(Intent.CATEGORY_DEFAULT);
 		termIntent.putExtra("packageName", getPackageName());
 		termIntent.putExtra("prerequisites", prerequisitesList);
-		termIntent.putExtra("statusFileDirectory", getInstallDir().getAbsolutePath() + "/debian/support/");
-		String scriptStr = getInstallDir().getAbsolutePath() + "/debian/support/launchProot " + commandStr + "; exit";
+		termIntent.putExtra("statusFileDirectory", getInstallDir().getAbsolutePath() + "/support/");
+		String scriptStr = getInstallDir().getAbsolutePath() + "/support/launchProot " + commandStr + "";
 		termIntent.putExtra("scriptStr", scriptStr);
 		try {
 			progressDialog = ProgressDialog.show(this, "Please wait ...", "Command is being run in GNURoot Debian.", true);
@@ -227,7 +227,6 @@ public class GNURootCoreActivity extends ActionBarActivityWithTabListener implem
 
 	     @Override
 	     public void run() {
-	    	//create a directory for binding the noexec directory to
 	    	String statusFileDirectory = intent.getStringExtra("statusFileDirectory");
 	    	String statusFileName = intent.getStringExtra("statusFileName");
 			Intent statusIntent = new Intent("com.gnuroot.debian.CHECK_STATUS");
