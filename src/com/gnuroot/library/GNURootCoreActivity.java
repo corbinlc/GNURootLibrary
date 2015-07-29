@@ -164,6 +164,7 @@ public class GNURootCoreActivity extends ActionBarActivityWithTabListener implem
 		termIntent.putExtra("prerequisites", prerequisitesList);
 		termIntent.putExtra("statusFileDirectory", getInstallDir().getAbsolutePath() + "/support/");
 		String scriptStr = getInstallDir().getAbsolutePath() + "/support/launchProot " + commandStr + "";
+		//String scriptStr = getInstallDir().getAbsolutePath() + "/support/busybox sh";
 		termIntent.putExtra("scriptStr", scriptStr);
 		try {
 			progressDialog = ProgressDialog.show(this, "Please wait ...", "Command is being run in GNURoot Debian.", true);
